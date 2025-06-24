@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Tambah Event + Poster - EventKesehatan</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 min-h-screen p-4">
+  <div class="max-w-3xl mx-auto bg-white shadow-md rounded-lg p-6">
+    <h2 class="text-xl font-bold mb-4">Form Tambah Event Kesehatan</h2>
+
+    <!-- STEP 1: Form -->
+    <form id="eventForm" class="space-y-4">
+      <input name="judul" placeholder="Judul Event" required class="w-full border rounded px-4 py-2" />
+      <textarea name="deskripsi" placeholder="Deskripsi Event" rows="3" class="w-full border rounded px-4 py-2"></textarea>
+
+      <!-- Upload Poster -->
+      <div>
+        <label class="block mb-1 font-medium">Upload Poster Event</label>
+        <input name="poster" type="file" accept="image/*" id="posterInput" onchange="previewPoster()" class="w-full border px-3 py-2 rounded" required>
+        <img id="posterPreview" class="mt-3 w-full rounded shadow-md hidden" alt="Preview Poster" />
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-4">
+        <input name="tanggal" type="date" required class="border rounded px-4 py-2 w-full" />
+        <input name="waktu" type="time" class="border rounded px-4 py-2 w-full" />
+      </div>
+
+      <input name="lokasi" placeholder="Lokasi / Kota" class="w-full border rounded px-4 py-2" />
+
+      <div class="grid md:grid-cols-2 gap-4">
+        <select name="metode" class="border rounded px-4 py-2 w-full">
+          <option value="">Metode</option>
+          <option value="Online">Online</option>
+          <option value="Offline">Offline</option>
+          <option value="Hybrid">Hybrid</option>
+        </select>
+        <select name="kategori" class="border rounded px-4 py-2 w-full">
+          <option value="">Kategori Event</option>
+          <option value="Seminar">Seminar</option>
+          <option value="Webinar">Webinar</option>
+          <option value="Workshop">Workshop</option>
+        </select>
+      </div>
+
+      <input name="penyelenggara" placeholder="Penyelenggara" class="w-full border rounded px-4 py-2" />
+      <input name="harga" placeholder="Harga / Gratis" class="w-full border rounded px-4 py-2" />
+      <select name="skp" class="border rounded px-4 py-2 w-full">
+        <option value="">SKP Tersedia?</option>
+        <option value="Ya">Ya</option>
+        <option value="Tidak">Tidak</option>
+      </select>
+
+      <input name="kontak" placeholder="Kontak WA/Email" class="w-full border rounded px-4 py-2" />
+      <input name="link" type="url" placeholder="Link Pendaftaran" class="w-full border rounded px-4 py-2" />
+
+      <!-- Button to trigger preview -->
+      <button type="button" onclick="previewEvent()" class="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 w-full">Lanjutkan ke Preview</button>
+    </form>
+
+    <!-- STEP 2: Preview -->
+    <div id="previewSection" class="hidden mt-6 border-t pt-6">
+      <h3 class="text-lg font-bold mb-4">📋 Preview Event Anda</h3>
+      <img id="previewPosterImg" class="rounded-lg mb-4 w-full shadow-md" alt="Preview Poster" />
+      <div class="space-y-2 text-sm text-gray-800">
+        <p><strong>Judul:</strong> <span id="prevJudul"></span></p>
+        <p><strong>Deskripsi:</strong> <span id="prevDeskripsi"></span></p>
+        <p><strong>Tanggal & Waktu:</strong> <span id="prevTanggal"></span> <span id="prevWaktu"></span></p>
+        <p><strong>Lokasi:</strong> <span id="prevLokasi"></span></p>
+        <p><strong>Metode:</strong> <span id="prevMetode"></span></p>
+        <p><strong>Kategori:</strong> <span id="prevKategori"></span></p>
+        <p><strong>Penyelenggara:</strong> <span id="prevPenyelenggara"></span></p>
+        <p><strong>Harga:</strong> <span id="prevHarga"></span></p>
+        <p><strong>SKP:</strong> <span id="prevSkp"></span></p>
+        <p><strong>Kontak:</strong> <span id="prevKontak"></span></p>
+        <p><strong>Link:</strong> <span id="prevLink"></span></p>
+      </div>
+
+      <!-- Confirm & Submit -->
+      <div class="flex gap-4 mt-4">
+        <button onclick="goBack()" class="w-full bg-gray-200 text-gray-700 px-6 py-2 rounded">Kembali</button>
+        <button onclick="submitFinal()" class="w-full bg-green-600 text-white px-6 py-2 rounded hover:bg-green-700">Konfirmasi & Kirim</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function previewPoster() {
+      const file = document.getElementById('posterInput').files[0];
+      const img = document.getElementById('posterPreview');
+      const reader = new FileReader();
+      reader.onload = function (e) {
+        img.src = e.target.result;
+        img.classList.remove('hidden');
+      };
+      if (file) reader.readAsDataURL(file);
+    }
+
+    function previewEvent() {
+      const form = document.getElementById('eventForm');
+      const data = new FormData(form);
+
+      document.getElementById('prevJudul').innerText = data.get('judul');
+      document.getElementById('prevDeskripsi').innerText = data.get('deskripsi');
+      document.getElementById('prevTanggal').innerText = data.get('tanggal');
+      document.getElementById('prevWaktu').innerText = data.get('waktu');
+      document.getElementById('prevLokasi').innerText = data.get('lokasi');
+      document.getElementById('prevMetode').innerText = data.get('metode');
+      document.getElementById('prevKategori').innerText = data.get('kategori');
+      document.getElementById('prevPenyelenggara').innerText = data.get('penyelenggara');
+      document.getElementById('prevHarga').innerText = data.get('harga');
+      document.getElementById('prevSkp').innerText = data.get('skp');
+      document.getElementById('prevKontak').innerText = data.get('kontak');
+      document.getElementById('prevLink').innerText = data.get('link');
+
+      // Copy poster preview
+      const posterSrc = document.getElementById('posterPreview').src;
+      document.getElementById('previewPosterImg').src = posterSrc;
+
+      form.classList.add('hidden');
+      document.getElementById('previewSection').classList.remove('hidden');
+    }
+
+    function goBack() {
+      document.getElementById('eventForm').classList.remove('hidden');
+      document.getElementById('previewSection').classList.add('hidden');
+    }
+
+    function submitFinal() {
+      alert("Event berhasil dikirim dan menunggu persetujuan admin.");
+      window.location.reload();
+    }
+  </script>
+</body>
+</html>
+<!DOCTYPE html><html><head><title>Tambah Event</title></head><body><h1>Form Tambah Event</h1></body></html>

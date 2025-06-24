@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard Saya - EventKesehatan</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+  <!-- Layout wrapper -->
+  <div class="min-h-screen flex flex-col md:flex-row">
+
+    <!-- Sidebar -->
+    <aside class="bg-green-700 text-white w-full md:w-64 p-4">
+      <div class="mb-6">
+        <h2 class="text-xl font-bold">EventKesehatan</h2>
+        <p class="text-sm text-green-200">Dashboard Pengguna</p>
+      </div>
+      <nav class="space-y-2">
+        <a href="dashboard-user.html" class="block py-2 px-3 rounded hover:bg-green-600 bg-green-800">📌 Event Saya</a>
+        <a href="notifikasi.html" class="block py-2 px-3 rounded hover:bg-green-600">🔔 Notifikasi</a>
+        <a href="profil.html" class="block py-2 px-3 rounded hover:bg-green-600">👤 Profil</a>
+        <a href="index.html" class="block py-2 px-3 rounded hover:bg-green-600">🔓 Logout</a>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="flex-1 p-6">
+      <h1 class="text-2xl font-bold mb-4">Event yang Disimpan</h1>
+
+      <!-- Card Event -->
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="bg-white rounded shadow p-4">
+          <img src="images/sample-event.jpg" alt="Event" class="w-full h-40 object-cover rounded mb-3">
+          <h2 class="font-semibold text-lg">Webinar Kesehatan Jiwa</h2>
+          <p class="text-sm text-gray-600">Online | 10 Juli 2025</p>
+          <p class="text-sm text-gray-500">Psikolog Klinis & Umum</p>
+          <button class="mt-2 bg-green-600 text-white px-4 py-1 rounded text-sm hover:bg-green-700">Lihat Detail</button>
+        </div>
+
+        <!-- Tambah card lainnya sesuai data -->
+      </div>
+    </main>
+  </div>
+
+</body>
+</html>

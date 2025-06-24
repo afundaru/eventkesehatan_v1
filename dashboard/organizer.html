@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dashboard Penyelenggara - EventKesehatan</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 min-h-screen">
+  <!-- Header -->
+  <header class="bg-white shadow p-4 flex justify-between items-center">
+    <h1 class="text-xl font-bold text-blue-700">Dashboard Penyelenggara</h1>
+    <span class="text-sm text-gray-600">👤 Halo, Panitia IDI Jakarta</span>
+  </header>
+
+  <!-- Main Dashboard -->
+  <main class="max-w-5xl mx-auto p-4">
+    <div class="grid md:grid-cols-3 gap-4 text-center mb-6">
+      <div class="bg-white p-4 rounded shadow">
+        <h2 class="text-lg font-semibold">Total Event</h2>
+        <p class="text-2xl text-blue-600 font-bold">6</p>
+      </div>
+      <div class="bg-white p-4 rounded shadow">
+        <h2 class="text-lg font-semibold">Menunggu Persetujuan</h2>
+        <p class="text-2xl text-yellow-500 font-bold">2</p>
+      </div>
+      <div class="bg-white p-4 rounded shadow">
+        <h2 class="text-lg font-semibold">Telah Dihadiri</h2>
+        <p class="text-2xl text-green-500 font-bold">550+</p>
+      </div>
+    </div>
+
+    <div class="flex justify-between items-center mb-4">
+      <h2 class="text-lg font-bold">Event Saya</h2>
+      <a href="#form-event" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 text-sm">+ Tambah Event Baru</a>
+    </div>
+
+    <!-- Tabel Event -->
+    <div class="overflow-x-auto bg-white shadow rounded">
+      <table class="w-full text-sm text-left">
+        <thead class="bg-gray-100 text-gray-700 font-semibold">
+          <tr>
+            <th class="p-3">Judul</th>
+            <th class="p-3">Tanggal</th>
+            <th class="p-3">Status</th>
+            <th class="p-3">Pengunjung</th>
+            <th class="p-3">Aksi</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="border-t">
+            <td class="p-3">Seminar IDI Regional 2025</td>
+            <td class="p-3">20 Juli 2025</td>
+            <td class="p-3"><span class="text-yellow-600 font-semibold">Menunggu</span></td>
+            <td class="p-3">120</td>
+            <td class="p-3 text-blue-600 underline">Edit</td>
+          </tr>
+          <tr class="border-t">
+            <td class="p-3">Workshop Farmasi Klinis</td>
+            <td class="p-3">1 Agustus 2025</td>
+            <td class="p-3"><span class="text-green-600 font-semibold">Disetujui</span></td>
+            <td class="p-3">430</td>
+            <td class="p-3 text-blue-600 underline">Edit</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </main>
+</body>
+</html>
